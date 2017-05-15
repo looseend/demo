@@ -46,12 +46,12 @@
 		</plugins>
 	</build>
 
-	<repositories>
+	<distributionManagement>
 		<repository>
 			<id>local</id>
 			<url>http://localhost:8081/</url>
 			<layout>default</layout>
 		</repository>
-	</repositories>
+	</distributionManagement>
 
 </project>

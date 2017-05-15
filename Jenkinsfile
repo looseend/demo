@@ -1,5 +1,6 @@
 pipeline {
     agent any
+    # comment
     stages {
         stage('build') {
             steps {

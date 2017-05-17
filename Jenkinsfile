@@ -1,26 +1,25 @@
 pipeline {
     agent any
+    tools { 
+        maven 'Maven' 
+        jdk 'jdk8' 
+    }
     stages {
         stage('build') {
-        steps {
-            withMaven (maven: 'Maven') {
+            steps {
                 sh 'mvn compile'
             }
         }
-        }
-        steps {
         stage('test') {
-            withMaven (maven: 'Maven') {
+            steps {
                 sh 'mvn test'
             }
         }
-        }
-        steps {
         stage('deploy') {
-            withMaven (maven: 'Maven') {
+            steps {
                 sh 'mvn deploy'
             }
         }
-        }
     }
 }
+

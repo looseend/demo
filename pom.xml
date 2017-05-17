@@ -38,6 +38,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>demo</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -49,7 +50,7 @@
 	<distributionManagement>
 		<repository>
 			<id>local</id>
-			<url>file://tmp</url>
+			<url>file:///Users/jsinglet/mvn_repo</url>
 			<layout>default</layout>
 		</repository>
 	</distributionManagement>

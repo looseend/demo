@@ -3,17 +3,17 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh './mvnw compile'
+                sh 'mvn compile'
             }
         }
         stage('test') {
             steps {
-                sh './mvnw test'
+                sh 'mvn test'
             }
         }
         stage('deploy') {
             steps {
-                sh './mvnw deploy'
+                sh 'mvn deploy'
             }
         }
     }

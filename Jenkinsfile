@@ -1,5 +1,4 @@
 node {
-
     checkout scm
 
     def server = Artifactory.server 'rancher.artifactory.build'

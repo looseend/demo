@@ -10,7 +10,9 @@ node {
         rtMaven.deployer releaseRepo: 'libs-release-local', snapshotRepo: 'libs-snapshot-local', server: server
         rtMaven.resolver releaseRepo: 'libs-release', snapshotRepo: 'libs-snapshot', server: server
 
-        def originalV = version()
+        def descriptor = Artifactory.mavenDescriptor()
+
+        def originalV = descriptor.version
         def major = originalV[0]
         def minor = originalV[1]
         def v = "${major}.${minor}-${env.BUILD_NUMBER}"

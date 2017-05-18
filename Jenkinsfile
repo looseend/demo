@@ -17,6 +17,10 @@ node {
         descriptor.transform()
         echo "Version: ${version} Build: ${env.BUILD_NUMBER}"
 
+        dir('./src') {
+            sh "ls -l"
+        }
+
 //        def major = originalV[0]
 //        def minor = originalV[1]
 //        def v = "${major}.${minor}-${env.BUILD_NUMBER}"

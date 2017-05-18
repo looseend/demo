@@ -12,6 +12,9 @@ node {
         rtMaven.deployer releaseRepo: 'libs-release-local', snapshotRepo: 'libs-snapshot-local', server: server
         rtMaven.resolver releaseRepo: 'libs-release', snapshotRepo: 'libs-snapshot', server: server
 
+        def descriptor = Artifactory.mavenDescriptor()
+        descriptor.version = version
+        descriptor.transform
         echo "Version: ${version}"
 
 //        def major = originalV[0]
@@ -40,7 +43,6 @@ node {
 //    }
 
     stage('Publish build info') {
-        echo "Version: buildInfo.buildName - ${buildInfo.buildNumber}"
         server.publishBuildInfo buildInfo
     }
 

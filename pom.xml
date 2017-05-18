@@ -47,12 +47,4 @@
 		</plugins>
 	</build>
 
-	<distributionManagement>
-		<repository>
-			<id>local</id>
-			<url>file:///Users/jsinglet/mvn_repo</url>
-			<layout>default</layout>
-		</repository>
-	</distributionManagement>
-
 </project>

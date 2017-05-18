@@ -4,6 +4,8 @@ node {
     def server = Artifactory.server 'rancher.artifactory.build'
     def rtMaven = Artifactory.newMavenBuild()
     def buildInfo = Artifactory.newBuildInfo()
+    def pom = readMavenPom file: 'pom.xml'
+    def version = pom.version.replace("-SNAPSHOT", ".${currentBuild.number}")
 
     stage('Artifactory configuration') {
         rtMaven.tool = 'Maven.3.5.0' // Tool name from Jenkins configuration
@@ -14,7 +16,6 @@ node {
 
         def originalV = descriptor.version
 
-        def pom = readMavenPom file: 'pom.xml'
 
 
         echo "Version: ${pom.version}"

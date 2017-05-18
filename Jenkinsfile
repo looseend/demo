@@ -13,6 +13,7 @@ node {
         rtMaven.resolver releaseRepo: 'libs-release', snapshotRepo: 'libs-snapshot', server: server
 
         echo "Version: ${version}"
+
 //        def major = originalV[0]
 //        def minor = originalV[1]
 //        def v = "${major}.${minor}-${env.BUILD_NUMBER}"
@@ -39,6 +40,7 @@ node {
 //    }
 
     stage('Publish build info') {
+        echo "Version: ${buildInfo.version}"
         server.publishBuildInfo buildInfo
     }
 

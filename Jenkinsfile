@@ -14,7 +14,7 @@ node {
 
         def descriptor = Artifactory.mavenDescriptor()
         descriptor.version = version
-        descriptor.transform
+        descriptor.transform()
         echo "Version: ${version}"
 
 //        def major = originalV[0]

@@ -13,7 +13,11 @@ node {
         def descriptor = Artifactory.mavenDescriptor()
 
         def originalV = descriptor.version
-        echo "Version: ${descriptor}"
+
+        def pom = readMavenPom file: 'pom.xml'
+
+
+        echo "Version: ${pom.version}"
 //        def major = originalV[0]
 //        def minor = originalV[1]
 //        def v = "${major}.${minor}-${env.BUILD_NUMBER}"

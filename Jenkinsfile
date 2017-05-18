@@ -13,12 +13,13 @@ node {
         def descriptor = Artifactory.mavenDescriptor()
 
         def originalV = descriptor.version
-        def major = originalV[0]
-        def minor = originalV[1]
-        def v = "${major}.${minor}-${env.BUILD_NUMBER}"
-        if (v) {
-            echo "Building version ${v}"
-        }
+        echo "Version: ${originalV}"
+//        def major = originalV[0]
+//        def minor = originalV[1]
+//        def v = "${major}.${minor}-${env.BUILD_NUMBER}"
+//        if (v) {
+//            echo "Building version ${v}"
+//        }
     }
 
     stage('build') {

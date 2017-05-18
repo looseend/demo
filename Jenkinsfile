@@ -40,7 +40,7 @@ node {
 //    }
 
     stage('Publish build info') {
-        echo "Version: ${buildInfo.version}"
+        echo "Version: ${buildInfo.buildName} - ${buildInfo.buildNumber}"
         server.publishBuildInfo buildInfo
     }
 

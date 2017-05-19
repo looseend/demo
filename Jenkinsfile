@@ -3,6 +3,8 @@ node {
     env.JAVA_HOME="${tool 'jdk8'}"
     env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
 
+    DOCKER_CRED = credentials('jfrog.io')
+
     def server = Artifactory.server 'grantking.jfrog.io'
     def rtMaven = Artifactory.newMavenBuild()
     def buildInfo = Artifactory.newBuildInfo()
@@ -45,7 +47,7 @@ node {
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
         docker.withRegistry('https://grantking-london-docker.jfrog.io', 'jfrog.io')  {
-            sh 'cat /root/.dockercfg'
+            sh 'docker login -u ${DOCKER_CRED_USR} -p ${DOCKER_CRED_PSW} grantking-london-docker.jfrog.io'
             def app = docker.build("grantking-london-docker.jfrog.io/demo")
             app.push("${version}")
             app.push("latest")

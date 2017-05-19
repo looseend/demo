@@ -10,8 +10,8 @@ node {
 
     stage('Artifactory configuration') {
         rtMaven.tool = 'Maven.3.5.0' // Tool name from Jenkins configuration
-        rtMaven.deployer releaseRepo: 'libs-release-local', snapshotRepo: 'libs-snapshot-local', server: server
-        rtMaven.resolver releaseRepo: 'libs-release', snapshotRepo: 'libs-snapshot', server: server
+        rtMaven.deployer releaseRepo: 'london-maven', snapshotRepo: 'london-maven', server: server
+        rtMaven.resolver releaseRepo: 'london-maven', snapshotRepo: 'london-maven', server: server
 
         def descriptor = Artifactory.mavenDescriptor()
         descriptor.version = version

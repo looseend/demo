@@ -3,8 +3,6 @@ node {
     env.JAVA_HOME = "${tool 'jdk8'}"
     env.PATH = "${env.JAVA_HOME}/bin:${env.PATH}"
 
-    DOCKER_CRED = credentials('jfrog.io')
-
     def server = Artifactory.server 'grantking.jfrog.io'
     def rtMaven = Artifactory.newMavenBuild()
     def buildInfo = Artifactory.newBuildInfo()

@@ -49,6 +49,7 @@ node {
     stage('Docker') {
         dir('.') {
             sh "docker build -t acme/demo:${env.BUILD_NUMBER} ."
+        }
     }
 
     stage('Publish build info') {

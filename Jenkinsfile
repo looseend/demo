@@ -44,7 +44,7 @@ node {
          * First, the incremental build number from Jenkins
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
-        docker.withRegistry('https://grantking-london-docker.jfrog.io', 'docker', 'docker')  {
+        docker.withRegistry('https://grantking-london-docker.jfrog.io', 'jfrog.io')  {
             sh 'cat /root/.dockercfg'
             def app = docker.build("grantking-london-docker.jfrog.io/demo")
             app.push("${version}")

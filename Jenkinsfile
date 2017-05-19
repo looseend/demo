@@ -22,6 +22,9 @@ node {
             sh "ls -l"
         }
 
+        echo "JDK: ${env.jdk8}"
+        echo "JDK: ${env.JAVA_HOME}"
+
 //        def major = originalV[0]
 //        def minor = originalV[1]
 //        def v = "${major}.${minor}-${env.BUILD_NUMBER}"

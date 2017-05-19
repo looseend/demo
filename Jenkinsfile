@@ -47,8 +47,8 @@ node {
         docker.withTool('Docker') {
             sh 'docker ps'
             def app = docker.build("acme/demo")
-            rtDocker.push("${version}")
-            rtDocker.push("latest")
+            app.push("${version}")
+            app.push("latest")
         }
 
     }

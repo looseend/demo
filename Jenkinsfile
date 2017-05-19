@@ -18,9 +18,7 @@ node {
         descriptor.transform()
         echo "Version: ${version} Build: ${env.BUILD_NUMBER}"
 
-        dir('./src') {
-            sh "ls -l"
-        }
+        sh "java -version"
 
         echo "JDK: ${env.jdk8}"
         echo "JDK: ${env.JAVA_HOME}"

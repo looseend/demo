@@ -1,5 +1,7 @@
 node {
     checkout scm
+    env.JAVA_HOME="${tool 'jdk8'}"
+    env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
 
     def server = Artifactory.server 'grantking.jfrog.io'
     def rtMaven = Artifactory.newMavenBuild()

@@ -42,6 +42,7 @@ node {
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
         docker.withTool('Docker') {
+            sh 'docker ps'
             def app = docker.build("acme/demo")
             rtDocker.push("${version}")
             rtDocker.push("latest")

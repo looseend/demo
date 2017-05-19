@@ -45,7 +45,7 @@ node {
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
         docker.withRegistry('https://grantking-london-docker.jfrog.io', 'jfrog.io')  {
-            sh 'docker ps'
+            sh 'cat /root/.dockercfg'
             def app = docker.build("grantking-london-docker.jfrog.io/demo")
             app.push("${version}")
             app.push("latest")

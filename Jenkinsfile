@@ -5,7 +5,7 @@ node {
     def rtMaven = Artifactory.newMavenBuild()
     def buildInfo = Artifactory.newBuildInfo()
     def pom = readMavenPom file: 'pom.xml'
-    def version = pom.version.replace("-SNAPSHOT", ".${currentBuild.number}")
+    def version = pom.version // .replace("-SNAPSHOT", ".${currentBuild.number}")
     def rtDocker = Artifactory.docker credentialsId: 'jfrog.io'
 
     stage('Artifactory configuration') {
@@ -41,11 +41,9 @@ node {
          * First, the incremental build number from Jenkins
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
-        docker.withRegistry() {
-            def app = docker.build("acme/demo")
-            rtDocker.push("${version}")
-            rtDocker.push("latest")
-        }
+        def app = docker.build("acme/demo")
+        rtDocker.push("${version}")
+        rtDocker.push("latest")
 
     }
 

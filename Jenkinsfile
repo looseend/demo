@@ -1,7 +1,7 @@
 node {
     checkout scm
-    env.JAVA_HOME="${tool 'jdk8'}"
-    env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
+    env.JAVA_HOME = "${tool 'jdk8'}"
+    env.PATH = "${env.JAVA_HOME}/bin:${env.PATH}"
 
     DOCKER_CRED = credentials('jfrog.io')
 
@@ -46,11 +46,14 @@ node {
          * First, the incremental build number from Jenkins
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
-        docker.withRegistry('https://grantking-london-docker.jfrog.io', 'jfrog.io')  {
-            sh 'docker login -u ${DOCKER_CRED_USR} -p ${DOCKER_CRED_PSW} grantking-london-docker.jfrog.io'
-            def app = docker.build("grantking-london-docker.jfrog.io/demo")
-            app.push("${version}")
-            app.push("latest")
+        docker.withRegistry('https://grantking-london-docker.jfrog.io', 'jfrog.io') {
+            withCredentials([usernamePassword(credentialsId: 'jfrog.io', passwordVariable: 'DOCKER_CRED_PSW', usernameVariable: 'DOCKER_CRED_USR')]) {
+
+                sh 'docker login -u ${DOCKER_CRED_USR} -p ${DOCKER_CRED_PSW} grantking-london-docker.jfrog.io'
+                def app = docker.build("grantking-london-docker.jfrog.io/demo")
+                app.push("${version}")
+                app.push("latest")
+            }
         }
 
     }

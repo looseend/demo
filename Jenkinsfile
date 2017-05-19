@@ -6,7 +6,7 @@ node {
     def buildInfo = Artifactory.newBuildInfo()
     def pom = readMavenPom file: 'pom.xml'
     def version = pom.version.replace("-SNAPSHOT", ".${currentBuild.number}")
-    def rtDocker = Artifactory.docker credentials: 'jfrog.io'
+    def rtDocker = Artifactory.docker credentialsId: 'jfrog.io'
 
     stage('Artifactory configuration') {
         rtMaven.tool = 'Maven.3.5.0' // Tool name from Jenkins configuration

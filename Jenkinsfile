@@ -1,11 +1,12 @@
 node {
     checkout scm
 
-    def server = Artifactory.server 'rancher.artifactory.build'
+    def server = Artifactory.server 'grantking.jfrog.io'
     def rtMaven = Artifactory.newMavenBuild()
     def buildInfo = Artifactory.newBuildInfo()
     def pom = readMavenPom file: 'pom.xml'
     def version = pom.version.replace("-SNAPSHOT", ".${currentBuild.number}")
+    def rtDocker = Artifactory.docker
 
     stage('Artifactory configuration') {
         rtMaven.tool = 'Maven.3.5.0' // Tool name from Jenkins configuration
@@ -35,22 +36,22 @@ node {
     stage('install & test') {
         rtMaven.run pom: 'pom.xml', goals: 'install', buildInfo: buildInfo
     }
-//    stage('Build & Push image') {
-//        /* Finally, we'll push the image with two tags:
-//         * First, the incremental build number from Jenkins
-//         * Second, the 'latest' tag.
-//         * Pushing multiple tags is cheap, as all the layers are reused. */
-//        def app = rtDocker.build("acme/b2b")
-////            app.push("${env.BUILD_NUMBER}")
-////            app.push("latest")
-////
-//    }
+    stage('Build & Push image') {
+        /* Finally, we'll push the image with two tags:
+         * First, the incremental build number from Jenkins
+         * Second, the 'latest' tag.
+         * Pushing multiple tags is cheap, as all the layers are reused. */
+        def app = rtDocker.build("acme/demo")
+        app.push("${version}")
+        app.push("latest")
 
-    stage('Docker') {
-        dir('.') {
-            sh "docker build -t acme/demo:${env.BUILD_NUMBER} ."
-        }
     }
+
+//    stage('Docker') {
+//        dir('.') {
+//            sh "docker build -t acme/demo:${env.BUILD_NUMBER} ."
+//        }
+//    }
 
     stage('Publish build info') {
         server.publishBuildInfo buildInfo

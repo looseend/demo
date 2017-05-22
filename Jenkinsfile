@@ -15,7 +15,6 @@ node {
         sh "git ls-remote --tags --heads https://github.com/ACMETechnologies/ag-grid.git"
 
         rtMaven.tool = 'Maven.3.5.0' // Tool name from Jenkins configuration
-        rtMaven.opts = '-U'
         rtMaven.deployer releaseRepo: 'london', snapshotRepo: 'london', server: server
         rtMaven.resolver releaseRepo: 'london', snapshotRepo: 'london', server: server
 

@@ -53,6 +53,7 @@
                                   <noFeatureMerge>true</noFeatureMerge>
 				  <enableFeatureVersions>true</enableFeatureVersions>
                                   <pushFeatures>true</pushFeatures>
+                                  <scmCommentPrefix>jgitflow: </scmCommentPrefix>
 				</configuration>
 			</plugin>
 		</plugins>

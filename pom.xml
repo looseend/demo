@@ -50,7 +50,9 @@
 				<artifactId>jgitflow-maven-plugin</artifactId>
 				<version>1.0-m5.1</version>
 				<configuration>
-					<enableFeatureVersions>true</enableFeatureVersions>
+                                  <noFeatureMerge>true</noFeatureMerge>
+				  <enableFeatureVersions>true</enableFeatureVersions>
+                                  <pushFeatures>true</pushFeatures>
 				</configuration>
 			</plugin>
 		</plugins>

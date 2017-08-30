@@ -52,6 +52,7 @@
 				<configuration>
 				  <enableFeatureVersions>true</enableFeatureVersions>
                                   <keepBranch>true</keepBranch>
+                                  <noDeploy>true</noDeploy> <!-- deploy only by Jenkins -->
                                   <noFeatureMerge>true</noFeatureMerge>
                                   <pushFeatures>true</pushFeatures>
                                   <noHotfixMerge>true</noHotfixMerge>

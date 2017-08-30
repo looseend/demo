@@ -12,6 +12,6 @@ public class DemoController {
 
     @RequestMapping
     public String hello() {
-        return "released: Hello d4";
+        return "Hello we are great again";
     }
 }

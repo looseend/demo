@@ -12,6 +12,6 @@ public class DemoController {
 
     @RequestMapping
     public String hello() {
-        return "Hello Hand";
+        return "Hello d4";
     }
 }

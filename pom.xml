@@ -55,6 +55,8 @@
                                   <noDeploy>true</noDeploy> <!-- deploy only by Jenkins -->
                                   <noFeatureMerge>true</noFeatureMerge>
                                   <pushFeatures>true</pushFeatures>
+                                  <pushHotfixes>true</pushHotfixes>
+                                  <pushReleases>true</pushReleases>
                                   <scmCommentPrefix>jgitflow: </scmCommentPrefix>
 				</configuration>
 			</plugin>

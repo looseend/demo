@@ -12,6 +12,6 @@ public class DemoController {
 
     @RequestMapping
     public String hello() {
-        return "Hello js-test";
+        return "Hello js-test HOTFIX";
     }
 }
